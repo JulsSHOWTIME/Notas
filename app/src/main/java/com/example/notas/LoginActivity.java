@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (username.equalsIgnoreCase("Julian") && password.equals("111")) {
 
-                    setUserSession();
+                    prefs.setPref(Constants.PREFS_USER, true);
                     Intent intent = new Intent(LoginActivity.this, NotesActivity.class);
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);
@@ -47,11 +47,4 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void setUserSession(){
-
-        SharedPreferences.Editor editor = getSharedPreferences("prefs_notes", MODE_PRIVATE).edit();
-        editor.putBoolean("userLogged", true);
-        editor.apply();
-
-    }
 }

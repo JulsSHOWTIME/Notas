@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,8 +28,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                SharedPreferences prefs = getSharedPreferences("prefs_notes", MODE_PRIVATE);
-                boolean userLogged = prefs.getBoolean("userLogged", false);
+                boolean userLogged = prefs.getPref(Constants.PREFS_USER);
                 Intent intent = null;
 
                 if (userLogged){
