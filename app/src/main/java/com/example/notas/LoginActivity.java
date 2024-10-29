@@ -1,6 +1,7 @@
 package com.example.notas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (username.equalsIgnoreCase("Julian") && password.equals("111")) {
 
+                    setUserSession();
                     Intent intent = new Intent(LoginActivity.this, NotesActivity.class);
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);
@@ -42,6 +44,14 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void setUserSession(){
+
+        SharedPreferences.Editor editor = getSharedPreferences("prefs_notes", MODE_PRIVATE).edit();
+        editor.putBoolean("userLogged", true);
+        editor.apply();
 
     }
 }

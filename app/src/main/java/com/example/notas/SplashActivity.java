@@ -1,6 +1,7 @@
 package com.example.notas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -27,7 +28,21 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                SharedPreferences prefs = getSharedPreferences("prefs_notes", MODE_PRIVATE);
+                boolean userLogged = prefs.getBoolean("userLogged", false);
+                Intent intent = null;
+
+                if (userLogged){
+
+                    intent = new Intent(SplashActivity.this, NotesActivity.class);
+
+                } else {
+
+                    intent = new Intent(SplashActivity.this, LoginActivity.class);
+
+                }
+
+
                 startActivity(intent);
                 finish();
 
