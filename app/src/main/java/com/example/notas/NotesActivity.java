@@ -3,6 +3,7 @@ package com.example.notas;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -28,6 +29,7 @@ public class NotesActivity extends BaseActivity {
             return insets;
         });
 
+        setListViewData();
 
         setLogoutEvent();
 
@@ -37,14 +39,29 @@ public class NotesActivity extends BaseActivity {
 
         lvNotes = findViewById(R.id.lvNotes);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(NotesActivity.this, android.R.layout.simple_list_item_1);
+        String[] notesList = new String[]{
+                "Nota 1", "Nota 2", "Nota 3", "Nota nueva a agregar"
+        };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(NotesActivity.this, android.R.layout.simple_list_item_1, notesList);
 
         lvNotes.setAdapter(adapter);
+
+        lvNotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(NotesActivity.this, DetailNoteActivity.class);
+                intent.putExtra(Constants.EXTRA_NOTE, notesList[position]);
+                startActivity(intent);
+
+            }
+        });
+
 
     }
 
     private void setLogoutEvent() {
-        Button btLogOut = findViewById(R.id.btLogOut);
+        Button btLogOut = findViewById(R.id.btLogout);
 
         btLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
