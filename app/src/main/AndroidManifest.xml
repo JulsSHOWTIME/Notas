@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Notas"
         tools:targetApi="31">
-        <activity android:name=".NotesActivity" />
+        <activity android:name="notes.NotesActivity" />
 
         <activity android:name="com.example.notas.LoginActivity" />
 

@@ -13,13 +13,15 @@ public class NoteViewHolder extends RecyclerView.ViewHolder {
 
     LinearLayout llNoteContainer;
 
-    TextView tvNote;
+    TextView tvNoteTitle;
+    TextView tvNoteBody;
 
     public NoteViewHolder(@NonNull View v) {
         super(v);
 
         llNoteContainer = v.findViewById(R.id.llNoteContainer);
-        tvNote = v.findViewById(R.id.tvNote);
+        tvNoteTitle = v.findViewById(R.id.tvNote);
+        tvNoteBody = v.findViewById(R.id.tvNoteBody);
 
     }
 }

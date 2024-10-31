@@ -1,14 +1,14 @@
 package com.example.notas;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import notes.NotesActivity;
 
 public class SplashActivity extends BaseActivity {
 

@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class BaseActivity extends AppCompatActivity {
-    PreferencesManager prefs;
+    public PreferencesManager prefs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
